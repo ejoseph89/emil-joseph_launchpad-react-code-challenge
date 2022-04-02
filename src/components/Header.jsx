@@ -16,6 +16,7 @@ const Header = () => {
         <Link to='/' className={classes.logo}><FaCode /></Link>
       </div>
       <div className={classes.linkContainer}>
+        <Link className={classes.links} to='/'> <p>Home</p> </Link>
         <Link className={classes.links} to='/universities'> <p>Universities</p> </Link>
         <Link className={classes.links} to='/postal-lookup'> <p>Postal Lookup</p> </Link>
       </div>
