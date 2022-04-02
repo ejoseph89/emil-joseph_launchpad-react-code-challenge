@@ -12,6 +12,7 @@ function App() {
   return (
     <div className="App">
       <Header />
+      <section className='mainContent'>
         <Routes>
           <Route
             path='/'
@@ -26,6 +27,7 @@ function App() {
             element={<PostalLookup />}
           />
         </Routes>
+      </section>
       <Footer />
     </div>
   );

@@ -1,0 +1,25 @@
+.navContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 20px 40px;
+  background-color: var(--dark-grey);
+}
+
+.logo {
+  color: var(--accent-pink);
+  font-size: 30px;
+}
+
+.linkContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+
+.links {
+  margin-right: 10px;
+  color: var(--accent-pink);
+}

@@ -1,0 +1,7 @@
+.footer {
+  background-color: var(--dark-grey);
+  padding: 20px 40px;
+
+  color: var(--accent-pink);
+  text-align: center;
+}
