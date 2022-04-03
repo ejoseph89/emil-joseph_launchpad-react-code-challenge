@@ -1,8 +1,12 @@
 .navContainer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  
   padding: 20px 40px;
   background-color: var(--dark-grey);
 }
