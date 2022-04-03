@@ -44,6 +44,21 @@ export const addPost = createAsyncThunk(
   }
 )
 
+// GET: get post by id
+export const getPost = createAsyncThunk(
+  'posts/getPost',
+  async (id) => {
+    try {
+      const response = await fetch(`${baseURL}/${id}`)
+      const data = await response.json()
+      console.log(data)
+      return data
+    } catch (error) {
+      console.log(error)
+    }
+  }
+)
+
 
 const initialPostState = {
   posts: [],
@@ -115,6 +130,22 @@ const postSlice = createSlice({
         getPostsStatus: '',
         getPostsError: '',
         addPostStatus: action.payload,
+        addPostError: '',
+        getPostByIdStatus: '',
+        getPostByIdError: '',
+        editPostStatus: '',
+        editPostError: '',
+        deletePostStatus: '',
+        deletePostError: ''
+      }
+    },
+    [getPost.fulfilled]: (state, action) => {
+      return {
+        ...state,
+        posts: [action.payload],
+        getPostsStatus: '',
+        getPostsError: '',
+        addPostStatus: '',
         addPostError: '',
         getPostByIdStatus: '',
         getPostByIdError: '',

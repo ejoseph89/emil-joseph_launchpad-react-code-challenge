@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 
+import { Link } from 'react-router-dom'
+
 import { useDispatch, useSelector } from 'react-redux'
-import { getPosts } from '../store/slices/postsSlice'
+import { getPosts, getPost } from '../store/slices/postsSlice'
 
 import PostItem from '../components/PostItem'
 import AddPostForm from '../components/modals/AddPostForm'
@@ -13,9 +15,11 @@ import classes from './Home.module.css'
 
 const Home = () => {
   const [ modalVisible, setModalVisible ] = useState(false)
+  const [ searchText, setSearchText ] = useState('')
 
   const dispatch = useDispatch()
   const posts = useSelector(state => state.postsState.posts)
+  // const post = useSelector(state => state.postsState.posts)
 
   console.log(posts)
   
@@ -24,7 +28,17 @@ const Home = () => {
     dispatch(getPosts())
   }, [dispatch])
 
-  
+
+  const changeHandler = (e) => {
+    setSearchText(e.target.value)
+  }
+
+  const submitHandler = (e) => {
+    e.preventDefault()
+    dispatch(getPost(searchText))
+    setSearchText('')
+  }
+
 
   return (
     <section className={classes.homeContainer}>
@@ -33,9 +47,13 @@ const Home = () => {
       }
       <div className={classes.header}>
         <h2>POSTS</h2>
+        {
+          posts.length === 1 && <a href="/"><button className={classes.addPostBtn}>Go Back</button></a>
+
+        }
         <div className={classes.homeActions}>
-          <form>
-            <input type="text" placeholder='Search post by ID' />
+          <form onSubmit={submitHandler}>
+            <input type="text" placeholder='Search post by ID' onChange={changeHandler} value={searchText} />
             <button className={classes.searchBtn} >Search</button>
           </form>
           <button className={classes.addPostBtn} onClick={() => setModalVisible(true)}>Add</button>
