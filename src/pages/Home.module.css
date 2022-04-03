@@ -4,3 +4,49 @@
   margin: 0 auto;
 }
 
+.header {
+  padding: 20px 40px;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.header h2 {
+  font-size: 2rem;
+  color: var(--light-text-grey);
+}
+
+.homeActions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.homeActions form {
+  margin-right: 30px;
+}
+
+.homeActions form input,
+.homeActions form button {
+  padding: 10px 25px;
+  border: none;
+  background-color: #fff;
+}
+
+.homeActions form input {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.homeActions form button {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background-color: var(--dark-grey);
+  color: var(--accent-pink);
+}
+
+.header button {
+  padding: 10px 25px;
+  border: none;
+  border-radius: 5px;
+}

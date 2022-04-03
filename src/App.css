@@ -20,6 +20,18 @@ a {
   text-decoration: none;
 }
 
+input {
+  font-family: var(--main-font);
+}
+
+button {
+  font-family: var(--main-font);
+}
+
+button:hover {
+  cursor: pointer;
+}
+
 .App {
   background-color: var(--dark-grey);
   height: 100vh ;
