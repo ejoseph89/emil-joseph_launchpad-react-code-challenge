@@ -2,7 +2,7 @@ import React from 'react'
 
 import { FaEdit, FaTimes } from 'react-icons/fa'
 
-import { editPost } from '../store/slices/postsSlice'
+import { editPost, deletePost } from '../store/slices/postsSlice'
 import { useDispatch, useSelector } from 'react-redux'
 
 
@@ -10,12 +10,16 @@ import classes from './PostItem.module.css'
 
 const PostItem = ({ post }) => {
   const dispatch = useDispatch()
-  const responseData = useSelector(state => state.postsState.editPostStatus)
+  const editResponseData = useSelector(state => state.postsState.editPostStatus)
+  const deleteResponseData = useSelector(state => state.postsState.deletePostStatus)
 
   const editHandler = () => {
     dispatch(editPost(post))
   }
   
+  const deleteHandler = () => {
+    dispatch(deletePost(post.id))
+  }
 
   return (
     <section className={classes.postItemContainer}>
@@ -25,7 +29,7 @@ const PostItem = ({ post }) => {
           <button className={classes.editPost} onClick={editHandler} >
             <FaEdit/> 
           </button>
-          <button className={classes.deletePost}>
+          <button className={classes.deletePost} onClick={deleteHandler}>
             <FaTimes /> 
           </button>
         </div>

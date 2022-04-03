@@ -39,7 +39,7 @@ export const addPost = createAsyncThunk(
       console.log(data)
       return data
     } catch (error) {
-      
+      console.log(error)
     }
   }
 )
@@ -86,6 +86,26 @@ export const editPost = createAsyncThunk(
     }
   }
 )
+
+// DELETE
+export const deletePost = createAsyncThunk(
+  'posts/deletePost',
+  async (id) => {
+    try {
+      const response = await fetch(`${baseURL}/${id}`, {
+        method: 'PUT'
+      })
+      alert(`Response Status: ${response.status}`)
+      const data = await response.json()
+      console.log(response)
+      console.log(data)
+      return data
+    } catch (error) {
+      console.log(error)
+    }
+  }
+)
+
 
 
 const initialPostState = {
@@ -184,8 +204,6 @@ const postSlice = createSlice({
       }
     },
     [editPost.fulfilled]: (state, action) => {
-      // const editedPosts = state.posts.map(post => post.id === action.payload.id ? action.payload : post)
-
       return {
         ...state,
         getPostsStatus: '',
@@ -197,6 +215,21 @@ const postSlice = createSlice({
         editPostStatus: action.payload,
         editPostError: '',
         deletePostStatus: '',
+        deletePostError: ''
+      }
+    },
+    [deletePost.fulfilled]: (state, action) => {
+      return {
+        ...state,
+        getPostsStatus: '',
+        getPostsError: '',
+        addPostStatus: '',
+        addPostError: '',
+        getPostByIdStatus: '',
+        getPostByIdError: '',
+        editPostStatus: '',
+        editPostError: '',
+        deletePostStatus: action.payload,
         deletePostError: ''
       }
     },
