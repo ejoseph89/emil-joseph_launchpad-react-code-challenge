@@ -12,8 +12,10 @@ import classes from './Home.module.css'
 
 const Home = () => {
   const dispatch = useDispatch()
-  const { posts } = useSelector(state => state.postsState)
+  const posts = useSelector(state => state.postsState.posts)
 
+  console.log(posts)
+  
 
   useEffect(() => {
     dispatch(getPosts())
@@ -33,7 +35,14 @@ const Home = () => {
         </div>
       </div>
       <div className={classes.main}>
-        <PostItem posts={posts} />
+        {
+          posts.map(post => (
+            <PostItem
+              key={post.id}
+              post={post}
+            />
+          ))
+        }
       </div>
     </section>
   )

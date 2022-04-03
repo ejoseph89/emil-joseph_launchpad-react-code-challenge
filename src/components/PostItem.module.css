@@ -1,0 +1,38 @@
+.postItemContainer {
+  background-color: var(--dark-grey);
+  color: var(--light-text-grey);
+  padding: 20px 30px;
+  margin-bottom: 10px;
+
+  border-radius: 5px;
+}
+
+.header {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.postActions button {
+  background-color: transparent;
+  border: none;
+  color: var(--accent-pink);
+
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.postActions .editPost {
+  margin-right: 20px;
+}
+
+.main .postTitle {
+  font-weight: 600;
+  padding-bottom: 5px;
+  text-transform: capitalize;
+}
+
+.main .postBody {
+  font-weight: 200;
+  padding-bottom: 20px;
+}
