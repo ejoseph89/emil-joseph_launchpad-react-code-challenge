@@ -10,16 +10,19 @@ import classes from './PostItem.module.css'
 
 const PostItem = ({ post }) => {
   const dispatch = useDispatch()
-  const editResponseData = useSelector(state => state.postsState.editPostStatus)
-  const deleteResponseData = useSelector(state => state.postsState.deletePostStatus)
+  // const editResponseData = useSelector(state => state.postsState.editPostStatus)
+  // const deleteResponseData = useSelector(state => state.postsState.deletePostStatus)
 
   const editHandler = () => {
     dispatch(editPost(post))
+    // console.log(editResponseData);
   }
   
   const deleteHandler = () => {
     dispatch(deletePost(post.id))
+    // console.log(deleteResponseData);
   }
+
 
   return (
     <section className={classes.postItemContainer}>
