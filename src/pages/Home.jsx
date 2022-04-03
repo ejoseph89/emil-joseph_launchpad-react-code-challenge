@@ -29,9 +29,9 @@ const Home = () => {
         <div className={classes.homeActions}>
           <form>
             <input type="text" placeholder='Search post by ID' />
-            <button>Search</button>
+            <button className={classes.searchBtn} >Search</button>
           </form>
-          <button>Add Post</button>
+          <button className={classes.addPostBtn}>Add Post</button>
         </div>
       </div>
       <div className={classes.main}>
