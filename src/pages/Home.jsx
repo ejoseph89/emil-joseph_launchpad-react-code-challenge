@@ -1,10 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
+import { useDispatch, useSelector } from 'react-redux'
+import { getPosts } from '../store/slices/postsSlice'
+
+import PostItem from '../components/PostItem'
 
 import classes from './Home.module.css'
 
-const Home = () => {
 
+
+
+const Home = () => {
+  const dispatch = useDispatch()
+  const { posts } = useSelector(state => state.postsState)
+
+
+  useEffect(() => {
+    dispatch(getPosts())
+  }, [dispatch])
 
 
   return (
@@ -18,6 +31,9 @@ const Home = () => {
           </form>
           <button>Add Post</button>
         </div>
+      </div>
+      <div className={classes.main}>
+        <PostItem posts={posts} />
       </div>
     </section>
   )
