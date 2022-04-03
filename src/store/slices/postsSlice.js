@@ -17,6 +17,34 @@ export const getPosts = createAsyncThunk(
   }
 )
 
+// POST
+export const addPost = createAsyncThunk(
+  'posts/addPost',
+  async (post) => {
+    try {
+      const response = await fetch(`${baseURL}`, {
+        method: 'POST',
+        body: JSON.stringify({
+          title: post.title,
+          body: post.body,
+          userId: post.userId
+
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8'
+        }
+      })
+      alert(`Response Status: ${response.status}`)
+      const data = await response.json()
+      console.log(data)
+      return data
+    } catch (error) {
+      
+    }
+  }
+)
+
+
 const initialPostState = {
   posts: [],
   getPostsStatus: '',
@@ -81,6 +109,22 @@ const postSlice = createSlice({
         deletePostError: ''
       }
     },
+    [addPost.fulfilled]: (state, action) => {
+      return {
+        ...state,
+        getPostsStatus: '',
+        getPostsError: '',
+        addPostStatus: action.payload,
+        addPostError: '',
+        getPostByIdStatus: '',
+        getPostByIdError: '',
+        editPostStatus: '',
+        editPostError: '',
+        deletePostStatus: '',
+        deletePostError: ''
+      }
+    },
+
   }
 })
 
