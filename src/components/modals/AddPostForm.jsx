@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { FaTimes } from 'react-icons/fa'
+import { FaTimes, FaCheckCircle } from 'react-icons/fa'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { addPost } from '../../store/slices/postsSlice'
@@ -9,16 +9,18 @@ import classes from './AddPostForm.module.css'
 
 
 
-const AddPostForm = ({ setModalVisible }) => {
+const AddPostForm = ({ setModalVisible, formData, setFormData }) => {
   const dispatch = useDispatch()
   const responseData = useSelector(state => state.postsState.addPostStatus)
   
 
-  const [ formData, setFormData ] = useState({
-    title: '',
-    body: '',
-    userId: ''
-  })
+  // const [ formData, setFormData ] = useState({
+  //   title: '',
+  //   body: '',
+  //   userId: ''
+  // })
+  
+  const [ showSuccessMessage, setShowSuccessMessage ] = useState(false)
 
   const handleChange = (e) => {
     setFormData({
@@ -35,13 +37,21 @@ const AddPostForm = ({ setModalVisible }) => {
       body: '',
       userId: ''
     })
+    if (responseData) {
+      setShowSuccessMessage(true)
+    }
+    // setModalVisible(false)
+  }
+
+  const closeModal = () => {
     setModalVisible(false)
+    setShowSuccessMessage(false)
   }
 
 
   return (
     <div className={classes.addPostFormBackdrop}>
-      <button onClick={() => setModalVisible(false)}><FaTimes className={classes.closeModal} /></button>
+      <button onClick={closeModal}><FaTimes className={classes.closeModal} /></button>
       <form className={classes.addPostForm} onSubmit={handleSubmit}>
         <div  className={classes.formControl}>
           <label htmlFor="title">Post Title</label>
@@ -59,9 +69,13 @@ const AddPostForm = ({ setModalVisible }) => {
             value={formData.userId} onChange={handleChange} />
         </div>
         <div className={classes.formBtns}>
-          <button className={classes.cancelBtn}  onClick={() => setModalVisible(false)}>Cancel</button>
+          <button className={classes.cancelBtn}  onClick={closeModal}>Cancel</button>
           <button type="submit" >Add Post</button>
         </div>
+        {
+          showSuccessMessage &&
+          <div className={classes.addPostSuccess}><p>Post Added</p> <FaCheckCircle /> </div>
+        }
       </form>
     </div>
   )

@@ -59,6 +59,34 @@ export const getPost = createAsyncThunk(
   }
 )
 
+// PUT
+export const editPost = createAsyncThunk(
+  'posts/editPost',
+  async (post) => {
+    try {
+      const { id, title, body, userId } = post
+      const response = await fetch(`${baseURL}/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+          id,
+          title,
+          body,
+          userId
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8'
+        }
+      })
+      alert(`Response Status: ${response.status}`)
+      const data = await response.json()
+      console.log(data)
+      return data
+    } catch (error) {
+      
+    }
+  }
+)
+
 
 const initialPostState = {
   posts: [],
@@ -150,6 +178,23 @@ const postSlice = createSlice({
         getPostByIdStatus: '',
         getPostByIdError: '',
         editPostStatus: '',
+        editPostError: '',
+        deletePostStatus: '',
+        deletePostError: ''
+      }
+    },
+    [editPost.fulfilled]: (state, action) => {
+      // const editedPosts = state.posts.map(post => post.id === action.payload.id ? action.payload : post)
+
+      return {
+        ...state,
+        getPostsStatus: '',
+        getPostsError: '',
+        addPostStatus: '',
+        addPostError: '',
+        getPostByIdStatus: '',
+        getPostByIdError: '',
+        editPostStatus: action.payload,
         editPostError: '',
         deletePostStatus: '',
         deletePostError: ''

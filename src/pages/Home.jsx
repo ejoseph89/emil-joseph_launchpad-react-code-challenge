@@ -16,6 +16,12 @@ import classes from './Home.module.css'
 const Home = () => {
   const [ modalVisible, setModalVisible ] = useState(false)
   const [ searchText, setSearchText ] = useState('')
+  const [ formData, setFormData ] = useState({
+    id: '',
+    title: '',
+    body: '',
+    userId: ''
+  })
 
   const dispatch = useDispatch()
   const posts = useSelector(state => state.postsState.posts)
@@ -43,7 +49,7 @@ const Home = () => {
   return (
     <section className={classes.homeContainer}>
       {
-        modalVisible && <AddPostForm setModalVisible={setModalVisible} />
+        modalVisible && <AddPostForm setModalVisible={setModalVisible} formData={formData} setFormData={setFormData} />
       }
       <div className={classes.header}>
         <h2>POSTS</h2>

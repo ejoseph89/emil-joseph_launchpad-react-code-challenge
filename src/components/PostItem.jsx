@@ -2,19 +2,27 @@ import React from 'react'
 
 import { FaEdit, FaTimes } from 'react-icons/fa'
 
+import { editPost } from '../store/slices/postsSlice'
+import { useDispatch, useSelector } from 'react-redux'
+
 
 import classes from './PostItem.module.css'
 
 const PostItem = ({ post }) => {
+  const dispatch = useDispatch()
+  const responseData = useSelector(state => state.postsState.editPostStatus)
 
-
+  const editHandler = () => {
+    dispatch(editPost(post))
+  }
+  
 
   return (
     <section className={classes.postItemContainer}>
       <div className={classes.header}>
         <h4 className={classes.postID}>Post ID: { post.id }</h4>
         <div className={classes.postActions} >
-          <button className={classes.editPost}>
+          <button className={classes.editPost} onClick={editHandler} >
             <FaEdit/> 
           </button>
           <button className={classes.deletePost}>
