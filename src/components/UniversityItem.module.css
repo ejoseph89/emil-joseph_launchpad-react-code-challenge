@@ -1,0 +1,10 @@
+.uniItem {
+  padding: 20px 40px;
+  border-radius: 5px;
+  background-color: var(--light-text-grey);
+  margin-bottom: 20px;
+}
+
+.uniItem a {
+  color: var(--accent-pink);
+}

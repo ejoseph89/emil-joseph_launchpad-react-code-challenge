@@ -9,8 +9,7 @@ export const getUniversities = createAsyncThunk(
     try {
       const response = await fetch(`${baseURL}${country}`)
       const data = await response.json()
-      const universities = await data.data
-      return universities
+      return data
       
     } catch (error) {
       console.log(error)

@@ -27,12 +27,3 @@
   margin-top: 50px;;
 }
 
-.uniItem {
-  padding: 20px 40px;
-  border-radius: 5px;
-  background-color: var(--light-text-grey)
-}
-
-.uniItem a {
-  color: var(--accent-pink);
-}

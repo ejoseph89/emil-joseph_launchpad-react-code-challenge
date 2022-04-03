@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
 
+import { v4 as uuidv4 } from 'uuid'
+
 import { useDispatch, useSelector } from 'react-redux'
 import { getUniversities } from '../store/slices/universitiesSlice'
 
 import SelectOption from '../components/SelectOption'
 
 import classes from './Universities.module.css'
+import UniversityItem from '../components/UniversityItem'
 
 
 const Universities = () => {
@@ -15,6 +18,7 @@ const Universities = () => {
   const universities = useSelector(state => state.universitiesState.universities)
 
   console.log(country);
+  console.log(universities);
 
   useEffect(() => {
     dispatch(getUniversities(country))
@@ -29,13 +33,13 @@ const Universities = () => {
         </div>
       </div>
       <div className={classes.main}>
-        <article className={classes.uniItem}>
-      <div>
-        <h3>Lambton College</h3>
-        <h4>Sarnia, CA</h4>
-        <p>Website: <a href="https://www.lambtoncollege.ca">Lambton College</a></p>
-      </div>
-    </article>
+        {
+          universities.map(university => {
+            return (
+              <UniversityItem key={uuidv4()} university={university} />
+            )
+          })
+        }
       </div>
     </section>
   )
