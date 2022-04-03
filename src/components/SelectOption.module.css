@@ -1,0 +1,21 @@
+form {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+}
+
+form label {
+  margin-right: 20px;
+  color: var(--light-text-grey);
+}
+
+form select {
+  padding: 10px;
+  width: 200px;
+  font-family: var(--main-font);
+}
+
+form option {
+  padding: 10px;
+  width: 200px;
+}
