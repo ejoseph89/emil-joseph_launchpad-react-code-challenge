@@ -12,16 +12,16 @@ const SelectOption = ({ country, setCountry }) => {
 
   const dispatch = useDispatch()
   const countries = useSelector(state => state.countriesState.countries)
-
-
+  
   useEffect(() => {
     dispatch(getCountries())
   }, [dispatch])
   
   const changeHandler = (e) => {
     setCountry(e.target.value)
-    console.log(country);
   }
+  
+  
 
   return (
     <form classes={classes.selectForm}>

@@ -12,7 +12,7 @@ const UniversityItem = ({ university }) => {
       <div>
         <h3>{ university.name }</h3>
         <h4>{ university.country }</h4>
-        <p>Website: <a href={university.web_pages[0]}>{ university.name }</a></p>
+        <p>Website: <a target="_blank" href={university.web_pages[0]}>{ university.name }</a></p>
       </div>
     </article>
   )

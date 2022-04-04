@@ -7,8 +7,10 @@ import { getUniversities } from '../store/slices/universitiesSlice'
 
 import SelectOption from '../components/SelectOption'
 
-import classes from './Universities.module.css'
 import UniversityItem from '../components/UniversityItem'
+
+import classes from './Universities.module.css'
+
 
 
 const Universities = () => {
@@ -17,8 +19,6 @@ const Universities = () => {
   const dispatch = useDispatch()
   const universities = useSelector(state => state.universitiesState.universities)
 
-  console.log(country);
-  console.log(universities);
 
   useEffect(() => {
     dispatch(getUniversities(country))
@@ -34,6 +34,7 @@ const Universities = () => {
       </div>
       <div className={classes.main}>
         {
+          country === '' ? <div className={classes.instruction} ><h2>Select a country from the dropdown</h2></div> :
           universities.map(university => {
             return (
               <UniversityItem key={uuidv4()} university={university} />
