@@ -35,11 +35,13 @@ const Universities = () => {
       <div className={classes.main}>
         {
           country === '' ? <div className={classes.instruction} ><h2>Select a country from the dropdown</h2></div> :
+          (universities.length !== 0) ? (
           universities.map(university => {
             return (
               <UniversityItem key={uuidv4()} university={university} />
             )
           })
+          ) : <div className={classes.instruction}> <h2>Selected country does not have a university</h2> </div>
         }
       </div>
     </section>
