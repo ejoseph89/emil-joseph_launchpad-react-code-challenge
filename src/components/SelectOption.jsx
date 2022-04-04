@@ -25,12 +25,12 @@ const SelectOption = ({ country, setCountry }) => {
 
   return (
     <form classes={classes.selectForm}>
-      <label htmlFor="">View by Country</label>
-      <select name="" id="" onChange={changeHandler}>
+      <label className={classes.selectLabel} htmlFor="">View by Country</label>
+      <select className={classes.select} name="" id="" onChange={changeHandler}>
         {
           countries.map(country => {
             return (
-              <option key={country.name} >{ country.name }</option>
+              <option className={classes.option} key={country.name} >{ country.name }</option>
             )
           })
         }

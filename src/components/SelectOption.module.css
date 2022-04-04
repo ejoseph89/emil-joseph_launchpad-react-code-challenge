@@ -1,21 +1,21 @@
-form {
+.selectForm {
   display: flex;
-  align-items: center;
   width: fit-content;
+  margin-right: 0;
 }
 
-form label {
+.selectLabel {
   margin-right: 20px;
   color: var(--light-text-grey);
 }
 
-form select {
+.select {
   padding: 10px;
   width: 200px;
   font-family: var(--main-font);
 }
 
-form option {
+.option {
   padding: 10px;
   width: 200px;
 }

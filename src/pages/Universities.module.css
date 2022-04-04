@@ -17,9 +17,12 @@
 .header h2 {
   font-size: 2rem;
   color: var(--light-text-grey);
+  flex: 2;
 }
 
-
+.uniActions {
+  flex: 2;
+}
 
 .main {
   width: 70%;
