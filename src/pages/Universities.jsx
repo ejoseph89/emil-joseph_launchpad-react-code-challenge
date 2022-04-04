@@ -29,7 +29,7 @@ const Universities = () => {
       <div className={classes.header} >
         <h2>LOOK UP UNIVERSITIES</h2>
         <div className={classes.uniActions} >
-          <SelectOption country={country} setCountry={setCountry} />
+          <SelectOption country={country} setCountry={setCountry} label="Search by Country" />
         </div>
       </div>
       <div className={classes.main}>

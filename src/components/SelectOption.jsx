@@ -7,7 +7,7 @@ import classes from './SelectOption.module.css'
 
 
 
-const SelectOption = ({ country, setCountry }) => {
+const SelectOption = ({ country, setCountry, label }) => {
   
 
   const dispatch = useDispatch()
@@ -25,7 +25,7 @@ const SelectOption = ({ country, setCountry }) => {
 
   return (
     <form classes={classes.selectForm}>
-      <label className={classes.selectLabel} htmlFor="">View by Country</label>
+      <label className={classes.selectLabel} htmlFor="">{ label }</label>
       <select className={classes.select} name="" id="" onChange={changeHandler}>
         {
           countries.map(country => {
